@@ -1,5 +1,5 @@
 ﻿
-public class ProblemSolving
+public class Practices
 {
     public static void Main()
     {
