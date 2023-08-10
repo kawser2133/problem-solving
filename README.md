@@ -1,6 +1,6 @@
 # Problem Solving Repository
 
-Welcome to my problem-solving repository! This repository contains solutions to various coding problems and challenges that I have tackled. The solutions are implemented in various programming languages and aim to showcase my problem-solving skills and coding practices.
+Welcome to my problem-solving repository! This repository contains solutions to various coding problems and challenges that I have tackled. The solutions are implemented in C# programming language and aim to showcase my problem-solving skills and coding practices.
 
 ## Contact
 
