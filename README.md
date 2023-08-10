@@ -1,4 +1,4 @@
-# Problem Solving Repository
+# Problem Solving Practice
 
 Welcome to my problem-solving repository! This repository contains solutions to various coding problems and challenges that I have tackled. The solutions are implemented in the C# programming language and aim to showcase my problem-solving skills and coding practices.
 
