@@ -1,17 +1,47 @@
 ﻿
+using ProblemSolvingPractice;
+
 public class Practices
 {
     public static void Main()
     {
+        Circle circle = new Circle("") { MyProperty = "dsdsd" };
+        
+        circle.Draw();
+
         int[] values = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
 
-        foreach (var item in values)
+        CustomCode.find_total(values);
+
+        //foreach (var item in values)
+        //{
+        //    if (PrimeNumbers(item))
+        //    {
+        //        Console.WriteLine(item);
+        //    }
+        //}
+    }
+
+    public static class CustomCode
+    {
+
+        public static int find_total(int[] my_numbers)
         {
-            if (PrimeNumbers(item))
+            int running_total = 0;
+
+            foreach (var value in my_numbers)
             {
-                Console.WriteLine(item);
+                if (value % 2 == 1 && value != 8)
+                    running_total += 3;
+                if (value % 2 == 0 && value != 8)
+				running_total += 1;
+                if (value == 8)
+                    running_total += 5;
             }
+
+            return running_total;
         }
+
     }
 
 
