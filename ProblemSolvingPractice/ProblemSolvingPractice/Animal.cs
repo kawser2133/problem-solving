@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Inheritance Example
 namespace ProblemSolvingPractice
 {
     public class Animal
