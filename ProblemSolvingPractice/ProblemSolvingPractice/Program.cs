@@ -1,29 +1,91 @@
 ﻿
 using ProblemSolvingPractice;
+using System.Diagnostics;
 
 public class Practices
 {
-    public static void Main()
+    public static async Task Main()
     {
-        Circle circle = new Circle("") { MyProperty = "dsdsd" };
-        
-        circle.Draw();
+        Console.WriteLine("Main thread started.");
 
-        int[] values = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+        Thread fetchThread1 = new Thread(() => FetchWeather("New York"));
+        Thread fetchThread2 = new Thread(() => FetchWeather("London"));
 
-        CustomCode.find_total(values);
+        fetchThread1.Start();
+        fetchThread2.Start();
 
-        //foreach (var item in values)
-        //{
-        //    if (PrimeNumbers(item))
-        //    {
-        //        Console.WriteLine(item);
-        //    }
-        //}
+        Stopwatch sw = Stopwatch.StartNew();
+        fetchThread1.Join();
+        Console.WriteLine($"S1-  {sw.Elapsed}");
+        sw.Stop();
+
+        Stopwatch sw1 = Stopwatch.StartNew();
+        fetchThread2.Join();
+        Console.WriteLine($"S2-  {sw1.Elapsed}");
+        sw1.Stop();
+
+        Console.WriteLine("Main thread finished.");
+
+
+        Console.WriteLine("Main method started.");
+
+        Task fetchTask1 = FetchWeatherAsync("New York");
+        Task fetchTask2 = FetchWeatherAsync("London");
+
+        Stopwatch sw3 = Stopwatch.StartNew();
+        //await Task.WhenAll(fetchTask1, fetchTask2);
+        await fetchTask1;
+        Console.WriteLine($"S3-  {sw3.Elapsed}");
+        sw3.Stop();
+        Stopwatch sw4 = Stopwatch.StartNew();
+        await fetchTask2;
+        Console.WriteLine($"S4-  {sw4.Elapsed}");
+        sw4.Stop();
+
+        Console.WriteLine("Main method finished.");
+    }
+
+    public static async Task FetchWeatherAsync(string city)
+    {
+        Console.WriteLine($"Fetching weather for {city}...");
+
+        await Task.Delay(TimeSpan.FromSeconds(2));
+        //using var httpClient = new HttpClient();
+        //await httpClient.GetStringAsync($"https://api.domainsdb.info/v1/domains/search?domain={city}&zone=com");
+        Console.WriteLine($"Fetched weather for {city}...");
+    }
+
+    static void FetchWeather(string city)
+    {
+        Console.WriteLine($"Fetching weather for {city}...");
+        // Simulate fetching weather by waiting
+        Thread.Sleep(TimeSpan.FromSeconds(2));
+        Console.WriteLine($"Fetched weather for {city}...");
     }
 
     public static class CustomCode
     {
+
+        public static int[] TwoSum(int[] nums, int target)
+        {
+            int sumValue = 0;
+            int[] returnValue = new int[] { };
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                Console.WriteLine(nums[i]);
+
+            }
+            // foreach(int value in nums)
+            // {
+            //     if(sumValue==target)
+            //     {
+
+            //     }
+
+            // }
+            return returnValue;
+        }
 
         public static int find_total(int[] my_numbers)
         {
@@ -34,7 +96,7 @@ public class Practices
                 if (value % 2 == 1 && value != 8)
                     running_total += 3;
                 if (value % 2 == 0 && value != 8)
-				running_total += 1;
+                    running_total += 1;
                 if (value == 8)
                     running_total += 5;
             }
