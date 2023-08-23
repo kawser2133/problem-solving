@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 public class Practices
 {
-    public static async Task Main()
+    public static async Task Main2()
     {
         Console.WriteLine("Main thread started.");
 
