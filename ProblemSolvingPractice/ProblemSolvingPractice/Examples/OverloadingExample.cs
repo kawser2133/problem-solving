@@ -1,6 +1,4 @@
-﻿
-
-namespace ProblemSolvingPractice
+﻿namespace ProblemSolvingPractice.Examples
 {
     public class OverloadingExample
     {
